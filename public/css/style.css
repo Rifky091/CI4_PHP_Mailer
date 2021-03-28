@@ -1,0 +1,147 @@
+#logo {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-family: 'Exo 2', sans-serif;
+}
+
+#login-card {
+    background-color: ghostwhite;
+    /* border: 2px solid green; */
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 9%;
+}
+
+#info-schedular .container-fluid{
+    margin-top: 5%;
+    padding: 5% 10%;
+}
+
+#login h2 {
+    font-family: 'Exo 2', sans-serif;
+}
+
+#login-form {
+    font-family: 'Exo 2', sans-serif;
+    margin-bottom: 5px;
+}
+
+#email-form {
+    font-family: 'Exo 2', sans-serif;
+    margin-bottom: 5px;
+}
+
+#password-form {
+    margin-bottom: 5px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+#content-left {
+    width: 50%;
+    /* border: 2px solid red; */
+    display: block;
+    float: left;
+}
+
+#content-right {
+    width: 50%;
+    /* border: 2px solid magenta; */
+    display: inline-block;
+}
+
+.form-control {
+    width: 80%;
+}
+
+#header-home .container-fluid{
+    padding: 0 15%;
+}
+
+#dashboard .container-fluid{
+    padding: 3% 10%;
+}
+
+#panel-landing .container-fluid, #auth.container-fluid{
+    padding: 9% 10%;
+}
+
+#panel-landing::after, #auth::after, #dashboard::after{
+    content:"";
+    background-image: url(../img/login-bg.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0.25;
+}
+
+#footer .container-fluid {
+    padding: 3% 10%;
+    background-color: ghostwhite;
+}
+
+#footer .container-fluid p {
+    font-family: 'Exo 2', 'Sans Serif';
+}
+
+.footer-home {
+    width: 100%;
+    height: 30px;
+    background-color: ghostwhite;
+    margin-top: 18%;
+    font-family: 'Exo 2', 'Sans Serif';
+}
+
+/* .header-home {
+    width: 100%;
+    height: 35px;
+    background-color: ghostwhite;
+}
+
+.header-home p {
+    font-family: 'Exo 2', 'Sans Serif';
+}
+
+.header-home a {
+    padding-top: 50%;
+    text-decoration: none;
+    color: black;
+    font-family: 'Exo 2', 'Sans Serif';
+} */
+
+.logo {
+    display: inline-block;
+    /* border: 2px solid red; */
+    margin-right: 55%;
+}
+
+.logo-landing {
+    padding-top: 10%;
+    font-size: 100px;
+}
+
+.mycontent {
+    margin-top: 15%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#login-card td {
+    width: 200px;
+}
+
+@media only screen and (max-width: 575.98px){
+    #info-schedular .container-fluid{
+        padding-top: 60%;
+    }
+}
+
+@media only screen and (min-width: 575.99px) and (max-width: 991.98px){
+    #info-schedular .container-fluid{
+        padding-top: 30%;
+    }
+}
