@@ -31,16 +31,26 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Pengguna::index');
-$routes->get('/login', 'Pengguna::authenticate');
-$routes->get('/logout', 'Pengguna::logout');
-$routes->get('/pengguna/dashboard', 'Pengguna::dashboard');
+$routes->get('/', 'NonPengguna::index');
+$routes->get('/login', 'NonPengguna::authenticate');
+$routes->post('/login-auth', 'NonPengguna::login');
+$routes->post('/register', 'NonPengguna::register');
+$routes->get('/logout', 'NonPengguna::logout');
+$routes->get('/pengguna', 'Pengguna::index');
 $routes->get('/pengguna/profile', 'Pengguna::profile');
-$routes->get('/pengguna/listjadwal', 'Pengguna::listjadwal');
-$routes->get('/pengguna/addjadwal', 'Pengguna::addjadwal');
-$routes->get('/pengguna/listtask', 'Pengguna::listtask');
-$routes->get('/pengguna/addtask', 'Pengguna::addtask');
-$routes->get('/admin/dashboard', 'Admin::index');
+$routes->put('/pengguna/updateProfile/(:segment)', 'Pengguna::updateProfile/$1');
+$routes->get('/pengguna/listJadwal', 'Pengguna::listJadwal');
+$routes->get('/pengguna/editJadwal/(:segment)', 'Pengguna::editJadwal/$1');
+$routes->put('/pengguna/updateJadwal/(:segment)', 'Pengguna::updateJadwal/$1');
+$routes->delete('/pengguna/deleteJadwal/(:segment)', 'Pengguna::deleteJadwal/$1');
+$routes->get('/pengguna/addJadwal', 'Pengguna::addJadwal');
+$routes->get('/pengguna/listTugas', 'Pengguna::listTugas');
+$routes->get('/pengguna/editTugas/(:segment)', 'Pengguna::editTugas/$1');
+$routes->put('/pengguna/updateTugas/(:segment)', 'Pengguna::updateTugas/$1');
+$routes->delete('/pengguna/deleteTugas/(:segment)', 'Pengguna::deleteTugas/$1');
+$routes->get('/pengguna/addTugas', 'Pengguna::addTugas');
+$routes->get('/admin', 'Admin::index');
+$routes->delete('/admin/delete/(:segment)', 'Admin::delete/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -14,8 +14,17 @@
 }
 
 #info-schedular .container-fluid{
-    margin-top: 5%;
+    /* margin-top: 5%; */
+    background-color: ghostwhite;
+}
+
+#info-tasks .container-fluid, #info-schedular .container-fluid{
     padding: 5% 10%;
+}
+
+#info-tasks .container-fluid{
+    background-color: rgb(10, 10, 20);
+    color: white;
 }
 
 #login h2 {
@@ -96,6 +105,14 @@
     font-family: 'Exo 2', 'Sans Serif';
 }
 
+.btn-login{
+    margin-left: 70%;
+}
+
+.btn-register{
+    margin-left: 67%;
+}
+
 /* .header-home {
     width: 100%;
     height: 35px;
@@ -135,13 +152,30 @@
 }
 
 @media only screen and (max-width: 575.98px){
-    #info-schedular .container-fluid{
+    /* #info-schedular .container-fluid{
         padding-top: 60%;
+    } */
+    #panel-landing .container-fluid h1{
+        font-size: 84px;
+    }
+    .btn-login{
+        margin-left: 53%;
+    }
+    
+    .btn-register{
+        margin-left: 48%;
     }
 }
 
 @media only screen and (min-width: 575.99px) and (max-width: 991.98px){
-    #info-schedular .container-fluid{
+    /* #info-schedular .container-fluid{
         padding-top: 30%;
+    } */
+    .btn-login{
+        margin-left: 55%;
+    }
+    
+    .btn-register{
+        margin-left: 50%;
     }
 }
