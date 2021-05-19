@@ -106,7 +106,7 @@ class Pengguna extends BaseController
             $found = false;
 
             foreach ($task as $data) {
-                if ($nama == $data['nama_tugas'] && $deadline = $data['deadline'] && $tipe_tugas == $data['tipe_tugas']) {
+                if ($nama == $data['nama_tugas'] && $deadline == $data['deadline'] && $tipe_tugas == $data['tipe_tugas']) {
                     $found = true;
                     break;
                 }
@@ -190,7 +190,6 @@ class Pengguna extends BaseController
                     break;
                 }
             }
-            echo $found;
 
             if ($found == false) {
                 $data = [
@@ -250,16 +249,16 @@ class Pengguna extends BaseController
         $emailstatus = $this->email->deleteEmail($id, 'tugas');
         if ($emailstatus) {
             if ($this->tugas->deleteTugas($id)) {
-                $this->session->setFlashData('success', "Delete Tugas Sukses!");
+                $this->session->setFlashData('success', "Hore! Tugasmu Sudah Selesai!");
                 return redirect()->to(base_url().'/pengguna/listTugas');
             }
             else{
-                $this->session->setFlashData('success', "Delete Tugas Gagal, Kesalahan Pada Server!");
+                $this->session->setFlashData('success', "Oops, Maaf Kesalahan Pada Server!");
                 return redirect()->to(base_url().'/pengguna/listTugas');
             }
         }
         else{
-            $this->session->setFlashData('success', "Delete Tugas Gagal, Kegagalan Menghapus Email Reminder!");
+            $this->session->setFlashData('success', "Maaf Terjadi Kegagalan Menghapus Email Reminder!");
             return redirect()->to(base_url().'/pengguna/listTugas');
         }
     }
@@ -328,7 +327,7 @@ class Pengguna extends BaseController
             $found = false;
 
             foreach ($schedule as $data) {
-                if ($nama == $data['nama_jadwal'] && $jam = $data['jam'] && $hari == $data['hari']) {
+                if ($nama == $data['nama_jadwal'] && $jam == $data['jam'] && $hari == $data['hari']) {
                     $found = true;
                     break;
                 }
@@ -389,7 +388,7 @@ class Pengguna extends BaseController
             $found = false;
 
             foreach ($schedule as $data) {
-                if ($nama == $data['nama_jadwal'] && $jam = $data['jam'] && $hari == $data['hari']) {
+                if ($nama == $data['nama_jadwal'] && $jam == $data['jam'] && $hari == $data['hari']) {
                     $found = true;
                     break;
                 }
@@ -557,6 +556,7 @@ class Pengguna extends BaseController
     private function generateEmailTugas($id, $time, $nama, $jam, $more)
     {
         $count = 0;
+        $now = false;
         for ($i=0; $i < $more; $i++) {
             $tgl = date_format($time, "Y-m-d");
             if ($i == 0) {
@@ -569,7 +569,7 @@ class Pengguna extends BaseController
                     'status' => false
                 ];
             }
-            else if ($i == $more-1) {
+            else if (($i == $more-1) && (!$now)) {
                 $pesan = "Halo ".$this->session->get('username').", tugas sudah selesai dibuat, jangan lupa untuk menyelesaikan tugasmu hingga tanggal $tgl!";
                 $dataemail = [
                     'id_tugas' => $id,
@@ -589,6 +589,7 @@ class Pengguna extends BaseController
                     'status' => false
                 ];
             }
+            if($dataemail['waktu_kirim'] == date("Y-m-d")) $now = true;
             $emailstatus = $this->email->insertEmail($dataemail, 'tugas', $this->session->get('email'));
             if ($emailstatus) $count++;
         }

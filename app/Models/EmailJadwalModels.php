@@ -10,7 +10,7 @@ class EmailJadwalModels extends Model
     public function getEmailJadwal($waktu_kirim)
     {
         return $this->db->table($this->table)->select('pengguna.email,
-        email_jadwal.subject, email_jadwal.pesan, email_jadwal.waktu_kirim,
+        email_jadwal.subject, jadwal.hari, email_jadwal.pesan, email_jadwal.waktu_kirim,
         email_jadwal.kode_email_jadwal')
         ->join('jadwal', 'email_jadwal.id_jadwal = jadwal.id_jadwal')
         ->join('pengguna', 'jadwal.id_pengguna = pengguna.id_pengguna')

@@ -28,8 +28,10 @@ class Email extends BaseController
         foreach ($dataemail as $email) {
             $status = $this->send($email['subject'], $email['pesan'], $email['email']);
             if($status){
-                $data['waktu_kirim'] = date("Y-m-d", strtotime($email['waktu_kirim']."+7 days"));
-                $this->email_jadwal->updateEmailJadwal($data, $email['kode_email_jadwal']);
+                if($now == date('Y-m-d', strtotime($email['hari']))){
+                    $data['waktu_kirim'] = date("Y-m-d", strtotime($email['waktu_kirim']."+7 days"));
+                    $this->email_jadwal->updateEmailJadwal($data, $email['kode_email_jadwal']);
+                }
             }
         }
         $dataemail = NULL;
@@ -38,7 +40,7 @@ class Email extends BaseController
             $status = $this->send($email['subject'], $email['pesan'], $email['email']);
             if($status){
                 $data['status'] = true;
-                $this->email_tugas->updateEmailJadwal($data, $email['kode_email_tugas']);
+                $this->email_tugas->updateEmailTugas($data, $email['kode_email_tugas']);
             }
         }
     }
@@ -95,14 +97,14 @@ class Email extends BaseController
         $mail = new PHPMailer(true);
 
         try {
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->SMTPDebug = 2;
             $mail->isSMTP();
-            $mail->Host       = 'smtp.googlemail.com';
+            $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'aldisaep@upi.edu'; // silahkan ganti dengan alamat email Anda
             $mail->Password   = 'aldi5aep'; // silahkan ganti dengan password email Anda
-            $mail->SMTPSecure = 'ssl';
-            $mail->Port       = 465;
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
 
             $mail->setFrom('aldisaep@upi.edu', 'Schedular'); // silahkan ganti dengan alamat email Anda
             $mail->addAddress($email);
