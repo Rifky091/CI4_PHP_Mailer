@@ -101,8 +101,8 @@ class Email extends BaseController
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'aldisaep@upi.edu'; // silahkan ganti dengan alamat email Anda
-            $mail->Password   = 'uJMvAld1sA3p2dU49'; // silahkan ganti dengan password email Anda
+            $mail->Username   = 'rifkymr@upi.edu'; // silahkan ganti dengan alamat email Anda
+            $mail->Password   = 'SL(StarLight)'; // silahkan ganti dengan password email Anda
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
